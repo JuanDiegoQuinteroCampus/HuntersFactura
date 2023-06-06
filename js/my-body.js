@@ -7,32 +7,21 @@ export class myBody extends HTMLElement {
     async components() {
         return await (await fetch("view/my-body.html")).text();
     }
-    selection(e) {
+    async add(e){
+    
         let $ = e.target;
         if ($.nodeName == "BUTTON") {
-            let inputs = document.querySelectorAll(`#${$.dataset.row} input`);
-            if ($.innerHTML == "-") {
-                inputs.forEach(element => {
-                    if (element.name == "amount" && element.value == 0) {
-                        document.querySelector(`#${$.dataset.row}`).remove();
-                    } else if (element.name == "amount") {
-                        element.value--;
-                    }
-                });
-            } else if ($.innerHTML == "+") {
-                inputs.forEach(element => {
-                    if (element.name == "amount") {
-                        element.value++;
-                    }
-                });
-            }
+            let plantilla = this.querySelector("#products").children;
+            plantilla = plantilla[plantilla.length-1];
+            plantilla = plantilla.cloneNode(true);
+            document.querySelector("#products").insertAdjacentElement("beforeend", plantilla);
         }
     }
     connectedCallback() {
         this.components().then(html => {
             this.innerHTML = html;
-            this.container = this.querySelector("#products");
-            this.container.addEventListener("click", this.selection);
+            this.add = this.querySelector("#add").addEventListener("click", this.add.bind(this));
+         
         })
     }
 }
