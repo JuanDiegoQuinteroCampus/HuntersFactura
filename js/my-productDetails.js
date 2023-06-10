@@ -27,16 +27,16 @@ export class myProductDetails extends HTMLElement{
                     }
                 });
             }
-            
         }
     }
-    connectedCallback(){
+    connectedCallback() {
         this.components().then(html => {
             this.innerHTML = html;
             this.container = document.querySelector("#products");
             this.container.addEventListener("click", this.selection);
-        })
+        });
     }
+    
 }
 customElements.define("my-product-details", myProductDetails);
 /* import styles from "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" assert { type: "css" };
