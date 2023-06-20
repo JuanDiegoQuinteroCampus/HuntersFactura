@@ -6,14 +6,9 @@
             $arg = array_pop($arg);
             return (!(self::$instance instanceof self) || !empty($arg)) ? self::$instance = new static(...(array) $arg) : self::$instance;
         }
-        function __set($name, $value)
-    {
-        $this -> $name = $value;
-    }
-    function __get($name)
-    {
-        return $this -> $name;
-    }
+        function __set($name, $value){
+            $this->$name = $value;
+        }
     }
     function autoload($class) {
         // Directorios donde buscar archivos de clases
@@ -22,8 +17,7 @@
             dirname(__DIR__).'/scripts/client/',
             dirname(__DIR__).'/scripts/product/',
             dirname(__DIR__).'/scripts/seller/',
-            dirname(__DIR__).'/scripts/db/',
-            
+            dirname(__DIR__).'/scripts/db/'
         ];
         // Convertir el nombre de la clase en un nombre de archivo relativo
         $classFile = str_replace('\\', '/', $class) . '.php';
@@ -40,28 +34,51 @@
     }
     spl_autoload_register('autoload');
 
-    class apiSuperPerrona{
-        use getInstance;
-        public function __construct(private $_METHOD, public $_HEADER, private $_DATA){
-            switch ($_METHOD) {
-                case 'POST':
-                    info::getInstance($_DATA['info']);
-                    break;
-            }
-        }
+    client::getInstance(json_decode(file_get_contents("php://input"), true));
 
-    }
-    $data = [
-        "_METHOD"=>$_SERVER['REQUEST_METHOD'], 
-        "_HEADER"=> apache_request_headers(), 
-        "_DATA" => json_decode(file_get_contents("php://input"), true)
-    ];
-    apiSuperPerrona::getInstance($data);
+
+
+    // class apiSuperPerrona{
+    //     use getInstance;
+    //     public function __construct(private $_METHOD, public $_HEADER, private $_DATA){
+    //         switch ($_METHOD) {
+    //             case 'POST':
+    //                 info::getInstance($_DATA['info']);
+    //                 break;
+    //         }
+    //     }
+
+    // }
+    // $data = [
+    //     "_METHOD"=>$_SERVER['REQUEST_METHOD'], 
+    //     "_HEADER"=> apache_request_headers(), 
+    //     "_DATA" => json_decode(file_get_contents("php://input"), true)
+    // ];
+    // apiSuperPerrona::getInstance($data);
     
 
-
-
-
+  
+    // factura
+    // N de bill
+    // Bill Date
+    
+    // vendedor
+    // Seller
+    
+    
+    // cliente
+    // Customer identification
+    // Full name
+    // Email
+    // Address
+    // Phone
+    
+    // productos
+    // Product Id
+    // Product Name
+    // Amount
+    // Unit value
+    
 
 
 
