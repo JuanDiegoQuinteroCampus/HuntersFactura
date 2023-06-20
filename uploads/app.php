@@ -34,8 +34,9 @@
     }
     spl_autoload_register('autoload');
 
-    client::getInstance(json_decode(file_get_contents("php://input"), true));
-    client::getInstance()->postclient();
+    client::getInstance(json_decode(file_get_contents("php://input"), true))->postClient();
+
+
 
 
     // class apiSuperPerrona{
