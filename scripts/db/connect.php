@@ -4,7 +4,7 @@
     }
     abstract class connect extends credentials implements environments{
         use getInstance;
-        protected $conx;
+        protected object $conx;
         function __construct(private $driver = "mysql",  private $port = 3306){
             try {
                 $this->conx = new PDO($this->driver.":host=".$this->__get('host').";port=".$this->port.";dbname=".$this->__get('dbname').";user=".$this->user.";password=".$this->password);
