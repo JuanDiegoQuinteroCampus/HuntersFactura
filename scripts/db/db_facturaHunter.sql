@@ -33,3 +33,6 @@ ALTER Table tb_bill ADD CONSTRAINT tb_bill_tb_seller_fk FOREIGN KEY(fk_id_seller
 ALTER Table tb_bill ADD CONSTRAINT tb_bill_tb_product_fk FOREIGN KEY(fk_id_product) REFERENCES tb_product(id_product);
 
 SELECT * from tb_client;
+SELECT * from tb_product;
+SELECT * from tb_seller;
+SELECT * from tb_bill;

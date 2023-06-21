@@ -34,10 +34,12 @@
     }
     spl_autoload_register('autoload');
 
-    client::getInstance(json_decode(file_get_contents("php://input"), true))->postClient();
+/*     client::getInstance(json_decode(file_get_contents("php://input"), true))->getAllClient();
+ */
+/* product::getInstance(json_decode(file_get_contents("php://input"), true))->getAllProduct(); */
 
-
-
+/* seller::getInstance(json_decode(file_get_contents("php://input"), true))->getAllSeller(); */
+bill::getInstance(json_decode(file_get_contents("php://input"), true))->postBill();
 
     // class apiSuperPerrona{
     //     use getInstance;
